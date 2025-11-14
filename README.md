@@ -34,6 +34,8 @@ This project implements a complete **15-step data merge and machine learning pip
 | **ML Dataset Size** | 3,859 jobs (96.8%) |
 | **Model Accuracy** | 77.46% (XGBoost) |
 
+> ⚠️ **Lưu ý về Salary Data**: Cả 2 nguồn dữ liệu hiện tại (Kaggle và GitHub) **không cung cấp thông tin lương**. Pipeline đã chuẩn bị sẵn các trường salary trong schema (salary_min, salary_max, salary_avg, salary_currency) nhưng hiện đang **100% NULL**. Các trường này sẵn sàng được sử dụng khi có nguồn dữ liệu mới có thông tin lương (ví dụ: VietnamWorks, TopCV). Xem chi tiết tại [docs/schema.md - Salary Fields](docs/schema.md#-salary-fields---current-status).
+
 ---
 
 ## 🚀 Quick Start
@@ -623,6 +625,128 @@ furnished to do so, subject to the following conditions:
 
 [Full MIT License text...]
 ```
+
+---
+
+## 📚 Documentation
+
+This project includes comprehensive documentation covering all aspects of the pipeline:
+
+### Core Documentation Files
+
+1. **📖 [README.md](README.md)** (This file)
+   - Project overview and quick start guide
+   - Complete pipeline description (15 steps)
+   - Usage instructions and examples
+   - Installation and dependencies
+
+2. **📋 [docs/schema.md](docs/schema.md)**
+   - **Master Schema**: Complete 19-column specification
+   - **City Normalization**: Reference table strategy and patterns
+   - **Salary Fields**: Current status (0% data) and future logic
+   - **Data Types**: All columns with examples and validation rules
+   - **Design Philosophy**: Forward compatibility and ML-readiness
+
+3. **🗺️ [docs/column_mapping.md](docs/column_mapping.md)**
+   - **Kaggle → Master**: Mapping rules with join strategy
+   - **GitHub → Master**: Multi-source mapping details
+   - **5 Transformation Functions**: City, salary, level, category, skills
+   - **Merge Strategy**: Priority-based deduplication (11.7%)
+   - **Future Sources**: Guide for adding new data sources
+
+4. **🔄 [docs/pipeline_overview.md](docs/pipeline_overview.md)**
+   - **15 Steps as 7 Logical Blocks** (A-G):
+     - Block A: Data Ingestion (Load CSV files)
+     - Block B: Schema & Mapping (Define + Map columns)
+     - Block C: Normalization (5 functions)
+     - Block D: Merge & Deduplicate (Priority-based)
+     - Block E: Data Quality & Export (Metrics + Files)
+     - Block F: EDA (4 visualizations)
+     - Block G: ML Pipeline (Feature engineering + XGBoost)
+   - **Data Flow Diagram**: ASCII visual representation
+   - **Input/Output Specifications**: Each block documented
+   - **Deduplication Strategy**: Complete explanation with examples
+     - Dedup key: title + company + city (case-insensitive)
+     - 528 duplicates removed (11.7%)
+     - Priority: Kaggle > GitHub (alphabetical sort)
+     - 5 real examples with edge cases
+     - 4 future improvement ideas
+   - **Extensibility Guide**: How to add new features/sources
+
+5. **🏷️ [docs/categorization_rules.md](docs/categorization_rules.md)**
+   - **Job Level Rules** (5 levels):
+     - Complete keyword list for each level (intern, junior, mid, senior, manager)
+     - Priority order and conflict handling
+     - Implementation code with examples
+     - Distribution statistics (65.7% mid, 23.3% senior, etc.)
+   - **Job Category Rules** (13 categories):
+     - Detailed keywords for each category (Backend, Frontend, Fullstack, Mobile, etc.)
+     - Priority order (Fullstack → Backend → Frontend → ...)
+     - Conflict resolution (6 scenarios documented)
+     - 40.5% "Other" (no match) analysis
+   - **Testing & Validation**: Test cases with expected outputs
+   - **Future Enhancements**: Skills-based, multi-label, confidence scores, ML-based
+
+6. **📍 [data/reference/README.md](data/reference/README.md)**
+   - **City/Province Reference Table**: 90+ patterns documented
+   - **Normalization Strategy**: 3-step process (pre-process, match, fallback)
+   - **Coverage Statistics**: 99.8% normalization rate
+   - **Testing Guide**: Test cases and validation
+   - **Extension Guide**: How to add new cities/districts
+
+7. **🗂️ [data/reference/city_province_mapping.csv](data/reference/city_province_mapping.csv)**
+   - **90+ Location Patterns**: Covers Ha Noi, Ho Chi Minh, Da Nang, etc.
+   - **4 Columns**: pattern, city_standard, province_standard, notes
+   - **Easy to Extend**: Add new patterns without code changes
+   - **Usage**: Loaded by `normalize_city_v2()` function
+
+8. **🤖 [docs/ml_pipeline.md](docs/ml_pipeline.md)**
+   - **Complete ML Pipeline**: Steps 11-15 documented in detail
+   - **Feature Engineering**: TF-IDF (500 features) + 5 numeric features
+   - **Model Training**: Random Forest (69%) vs XGBoost (77%) comparison
+   - **Evaluation Metrics**: Accuracy, precision, recall, F1-score per category
+   - **Error Analysis**: Common misclassifications and root causes
+   - **Planned Improvements** (3 groups):
+     - Group 1: Baseline models (Logistic Regression, Linear SVM) + macro metrics
+     - Group 2: Class imbalance solutions (undersampling, class weights, SMOTE)
+     - Group 3: Feature enhancements (skill count, skill stacks, BERT embeddings)
+   - **Success Criteria**: Defined metrics for each improvement
+   - **Implementation Roadmap**: 4-phase plan with priorities
+
+9. **📓 [vietnam_it_jobs_merge_analysis.ipynb](vietnam_it_jobs_merge_analysis.ipynb)**
+   - **Executable Pipeline**: All 15 steps implemented
+   - **Inline Documentation**: Comments and markdown explanations
+   - **Code Examples**: Working functions with real data
+   - **Visualizations**: 4+ charts with interpretations
+
+### Documentation Coverage
+
+| Topic | Documentation File | Status |
+|-------|-------------------|--------|
+| Project Overview | README.md | ✅ Complete |
+| Master Schema (19 cols) | docs/schema.md | ✅ Complete |
+| Column Mapping Rules | docs/column_mapping.md | ✅ Complete |
+| Pipeline Flow (15 steps) | docs/pipeline_overview.md | ✅ Complete |
+| Categorization Rules | docs/categorization_rules.md | ✅ Complete |
+| Deduplication Strategy | docs/pipeline_overview.md (Block D section) | ✅ Complete |
+| City Normalization | docs/schema.md + data/reference/README.md | ✅ Complete |
+| Salary Strategy | docs/schema.md (Salary Fields section) | ✅ Complete |
+| **ML Pipeline (Steps 11-15)** | **docs/ml_pipeline.md** | ✅ Complete |
+| Implementation | vietnam_it_jobs_merge_analysis.ipynb | ✅ Complete |
+| City Reference Table | data/reference/city_province_mapping.csv | ✅ Complete |
+
+### Quick Navigation
+
+**Want to understand...**
+- **Overall project?** → Start with this [README.md](README.md)
+- **Data structure?** → Read [docs/schema.md](docs/schema.md)
+- **How sources are mapped?** → See [docs/column_mapping.md](docs/column_mapping.md)
+- **Pipeline flow?** → Check [docs/pipeline_overview.md](docs/pipeline_overview.md)
+- **Categorization rules?** → View [docs/categorization_rules.md](docs/categorization_rules.md)
+- **Deduplication strategy?** → See [docs/pipeline_overview.md](docs/pipeline_overview.md#-deduplication-strategy---detailed-explanation)
+- **City normalization?** → View [data/reference/README.md](data/reference/README.md)
+- **ML pipeline details?** → Read [docs/ml_pipeline.md](docs/ml_pipeline.md)
+- **Code implementation?** → Open [vietnam_it_jobs_merge_analysis.ipynb](vietnam_it_jobs_merge_analysis.ipynb)
 
 ---
 
