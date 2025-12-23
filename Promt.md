@@ -1,6 +1,6 @@
 Bạn là Senior Data Analyst + Data Scientist + Data Engineer. Hãy tạo 01 Jupyter Notebook (.ipynb) end-to-end cho đề tài:
 
-“PHÂN TÍCH XU HƯỚNG VIỆC LÀM VIỆT NAM” (Vietnam Job Market Trends)
+Thu thập & phân tích tin tuyển dụng Việt Nam (Snapshot) và mô hình dự đoán lương/level
 
 ========================
 0) MỤC TIÊU & ĐẦU RA
