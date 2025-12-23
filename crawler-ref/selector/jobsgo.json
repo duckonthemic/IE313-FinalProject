@@ -1,0 +1,15 @@
+{
+    "source": "jobsgo",
+    "base_url": "https://jobsgo.vn",
+    "selectors": {
+        "job_title": "//h1[@class='job-title']//text()",
+        "job_type": "//div[@class='job-info']//span[contains(@class,'job-type')]/text()",
+        "position_level": "//div[@class='job-info']//span[contains(@class,'position')]/text()",
+        "city": "//div[@class='job-location']//a/text()",
+        "experience": "//div[@class='job-info']//span[contains(@class,'experience')]/text()",
+        "skills": "//div[@class='job-skills']//a/text()",
+        "job_fields": "//div[@class='job-category']//a/text()",
+        "salary": "//div[@class='job-salary']//text()",
+        "company_name": "//div[@class='company-name']//a/text()"
+    }
+}

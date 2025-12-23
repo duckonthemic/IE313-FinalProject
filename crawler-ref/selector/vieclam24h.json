@@ -1,0 +1,15 @@
+{
+    "source": "vieclam24h",
+    "base_url": "https://vieclam24h.vn",
+    "selectors": {
+        "job_title": "//h1[@class='job-title']//text()",
+        "job_type": "//div[contains(@class,'info-job')]//li[contains(.,'Loại hình')]//span/text()",
+        "position_level": "//div[contains(@class,'info-job')]//li[contains(.,'Cấp bậc')]//span/text()",
+        "city": "//div[contains(@class,'info-job')]//li[contains(.,'Địa điểm')]//a/text()",
+        "experience": "//div[contains(@class,'info-job')]//li[contains(.,'Kinh nghiệm')]//span/text()",
+        "skills": "//div[@class='job-skills']//span/text()",
+        "job_fields": "//div[contains(@class,'info-job')]//li[contains(.,'Ngành')]//a/text()",
+        "salary": "//div[contains(@class,'info-job')]//li[contains(.,'Lương')]//span/text()",
+        "company_name": "//div[@class='company-info']//a[@class='company-name']/text()"
+    }
+}

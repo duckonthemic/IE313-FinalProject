@@ -1,0 +1,15 @@
+{
+    "source": "topcv",
+    "base_url": "https://www.topcv.vn",
+    "selectors": {
+        "job_title": "//h1[@class='job-title']//text()",
+        "job_type": "//div[contains(@class,'job-detail')]//div[contains(text(),'Hình thức')]/following-sibling::div//text()",
+        "position_level": "//div[contains(@class,'job-detail')]//div[contains(text(),'Cấp bậc')]/following-sibling::div//text()",
+        "city": "//div[contains(@class,'location')]//a/text()",
+        "experience": "//div[contains(@class,'job-detail')]//div[contains(text(),'Kinh nghiệm')]/following-sibling::div//text()",
+        "skills": "//div[@class='job-tags']//a/text()",
+        "job_fields": "//div[contains(@class,'job-detail')]//div[contains(text(),'Ngành')]/following-sibling::div//text()",
+        "salary": "//div[contains(@class,'salary')]//text()",
+        "company_name": "//div[@class='company-name']//a/text()"
+    }
+}

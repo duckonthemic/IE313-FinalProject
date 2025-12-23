@@ -1,0 +1,22 @@
+{
+  "job_title": "//div[contains(@class, 'job-desc')]//h1",
+  "salary": "//strong[contains(text(), 'Lương')]/following-sibling::p",
+  "city": "//div[contains(@class, 'detail-box')]//div[contains(@class, 'map')]//a",
+  "experience": "//strong[contains(text(), 'Kinh nghiệm')]/following-sibling::p",
+  "work_location": "//div[contains(@class, 'place-name')]//span",
+  "expiration_date": "//strong[contains(text(), 'Hết hạn nộp')]/following-sibling::p",
+  "company_name": "//div[contains(@class, 'job-desc')]//h1/following-sibling::a",
+  "company_address": "//div[contains(@class, 'place-name')]//span",
+  "position_level": "//strong[contains(text(), 'Cấp bậc')]/following-sibling::p",
+  "job_type": "//strong[contains(text(), 'Hình thức')]/following-sibling::p",
+  "skills": "//div[contains(@class, 'job-tags')]//ul/li",
+  "job_fields": "//strong[contains(text(), 'Ngành nghề')]/following-sibling::p",
+  "number_of_vacancies": "",
+  "gender": "",
+  "company_field": "",
+  "company_size": "",
+  "work_hours": "",
+  "job_description": "//div[contains(@class, 'detail-title') and text()[contains(., 'Mô tả Công việc')]]/following-sibling::*",
+  "requirements": "//div[contains(@class, 'detail-title') and text()[contains(., 'Yêu Cầu Công Việc')]]/following-sibling::*",
+  "benefits": "//p[strong[contains(text(), 'Phúc lợi và quyền lợi')]]/following-sibling::p | //div[contains(@class, 'detail-title') and text()[contains(., 'Phúc lợi')]]/following-sibling::ul/li"
+}
