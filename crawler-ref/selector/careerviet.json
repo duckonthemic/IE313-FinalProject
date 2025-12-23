@@ -1,0 +1,13 @@
+{
+  "job_title": "//h1[@class='job-title']",
+  "job_type": "//div[contains(@class,'job-type')]//text()",
+  "position_level": "//div[contains(@class,'job-level')]//text()",
+  "city": "//div[contains(@class,'location')]//a/text()",
+  "experience": "//div[contains(@class,'experience')]//text()",
+  "skills": "//div[@class='job-tags']//a/text()",
+  "job_fields": "//div[contains(@class,'industry')]//a/text()",
+  "salary": "//div[contains(@class,'salary')]//text()",
+  "salary_min": "//div[contains(@class,'salary')]/@data-min",
+  "salary_max": "//div[contains(@class,'salary')]/@data-max",
+  "unit": "//div[contains(@class,'salary')]/@data-unit"
+}
